@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: case
+  name: case
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: case
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: case
+    spec:
+      containers:
+      - image: heidist/casestudy:0.3
+        name: casestudy
+        resources: {}
+status: {}
