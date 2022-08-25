@@ -7,6 +7,7 @@ import (
   "k8s.io/client-go/kubernetes"
   //"k8s.io/client-go/tools/clientcmd"
   "k8s.io/client-go/rest"
+  "time"
 
 )
 
@@ -22,9 +23,13 @@ func main() {
   // creates the clientset
   clientset, _ := kubernetes.NewForConfig(config)
   // API access
-  pods, _ := clientset.CoreV1().Pods("default").List(context.Background(), v1.ListOptions{})
-  fmt.Printf("There are %d pods in the cluster\n", len(pods.Items))
-  for _, pod := range pods.Items{
-    fmt.Printf("%s \n", pod.Name)
+  for {
+    pods, _ := clientset.CoreV1().Pods("a").List(context.Background(), v1.ListOptions{})
+    fmt.Printf("There are %d pods in the namespace a\n", len(pods.Items))
+    for _, pod := range pods.Items{
+      fmt.Printf("%s \r\n", pod.Name)
+    }
+    fmt.Printf("  \n ****** \n ")
+    time.Sleep(3*time.Second)
   }
 }
