@@ -15,11 +15,6 @@ func main() {
   // pass kubeconfig
   //config, error := clientcmd.BuildConfigFromFlags("", "/home/ng-voice/.kube/config")
   config, _ := rest.InClusterConfig()
-
-  //if error != nil {
-    //config, _ := rest.InClusterConfig()
-    //fmt.Printf("working inside the cluster\n")
-  //}
   // creates the clientset
   clientset, _ := kubernetes.NewForConfig(config)
   // API access
