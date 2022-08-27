@@ -29,8 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'helm version'
-                sh 'helm init --service-account default'
-                sh 'helm delete case-chart'
+                sh 'helm uninstall case-chart'
                 sh 'helm install case-chart casestudy/ --values casestudy/values.yaml'
                 }
             }
