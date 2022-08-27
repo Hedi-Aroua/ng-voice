@@ -29,8 +29,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'helm version'
-                sh 'helm uninstall case-chart'
-                sh 'helm install case-chart casestudy/ --values casestudy/values.yaml'
+                sh 'helm delete case-chart --kubeconfig /home/ng-voice/.kube/config'
+                sh 'helm install case-chart casestudy/ --values casestudy/values.yaml --kubeconfig /home/ng-voice/.kube/config'
                 }
             }
     }   
