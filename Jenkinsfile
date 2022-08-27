@@ -33,6 +33,5 @@ pipeline {
                 sh 'helm install case-chart casestudy/ --values casestudy/values.yaml'
                 }
             }
-    }
-    
+    }   
 }
