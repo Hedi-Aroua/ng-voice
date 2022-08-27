@@ -24,7 +24,7 @@ pipeline {
                 sh 'docker push heidist/casestudy:latest'
                 }
             }
-        }
+        
 
         stage('Deploy') {
             steps {
@@ -33,6 +33,6 @@ pipeline {
                 sh 'helm install case-chart casestudy/ --values casestudy/values.yaml'
                 }
             }
-        }
     }
+    
 }
